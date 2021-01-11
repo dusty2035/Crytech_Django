@@ -1,0 +1,39 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<main>
+    <div class="hero-banner-games">
+        <video class="hero__video" autoplay loop muted>
+            <source src="{% static 'video/background-video.mp4' %}"> 
+        </video>
+    </div>
+    <div class="page__information">
+        <a href="{% url 'home' %}">
+         <div class="page__information-root">
+             <h4>Home</h4>
+         </div>
+        </a>
+        
+         <a href="#">
+             <div class="page__information-root">
+                 <h4> &nbsp; > Games</h4>
+             </div>
+         </a>
+         
+        
+    </div>
+    <div class="game">
+        <div class="game-box">
+            {% for game in games %}
+            <div class="game-box-content">
+                <a href="{% url  'game' game.id %}">
+                    <img src="{{ game.main_img.url }}" alt="{{ game.alt_text }}" class="game-box-content-img">
+                    <img src="{{ game.name_img.url }}" alt="{{ game.alt_text }}" class="game-box-content-name">
+                </a>
+            </div>
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

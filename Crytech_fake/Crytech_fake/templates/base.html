@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'swiper/swiper-bundle.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Crytch</title>
+</head>
+<body>
+    <header>
+        <div class="header" id="header">
+            <div class="header__logo">
+                <div class="header__logo-box">
+                    <img src="{% static 'img/logoes/crytech-logo.1.png' %}" alt="" class="header__logo-box-img" id="logo" >
+                </div>
+            <a href="{% url 'home' %}">
+                <div class="header__logo-textbox" id="logo_text">
+                    <img src="{% static 'img/logoes/crytech-text.png' %}" alt="" class="header__logo-textbox-text">
+                </div>
+            </div></a>
+            <div class="header__nav" id="nav">
+                <li><a href="{% url 'games' %}">Games</a></li>
+                <li><a href="{% url 'products' %}">Shop</a></li>
+                <li><a href="{% url 'news' %}">News</a></li>
+                <li><a href="{% url 'events' %}">Events</a></li>
+                <li><a href="#">Basket</a></li>
+                {% if request.user.is_authenticated %}
+                <li><a href="{% url 'logedin' %}">Account</a></li>
+                {% else %}
+                <li><a href="{% url 'login' %}">Login</a></li>
+                {% endif %}
+                <li><a href="{% url 'search' %}">Search</a></li>
+
+            </div>
+            <div class="header__icon" id="icon">
+                <a href="#"><div class="header__icon-basket">
+                    <div class="header__icon-basket-name">
+                        <span>Basket</span>
+                    </div>
+                    <div class="header__icon-basket-logo">
+                        <img src="{% static 'img/icons/SVG/basket.svg' %}" alt="">
+                        <div class="header__icon-basket-count">
+                            <div class="header__icon-basket-count-num">
+                                <h5>0</h5>
+                            </div>
+                        </div>
+                        
+                    </div>
+                </div></a>
+                {% if request.user.is_authenticated %}
+                <a href="{% url 'logedin' %}"><div class="header__icon-account">
+                   <div class="header__icon-account-name">
+                       <span>Account</span>
+                   </div>
+                   <div class="header__icon-account-logo">
+                       <img class="header__icon-account-logo-position" src="{% static 'img/icons/SVG/profile_icon.svg' %}" alt="">
+                   </div>
+                </div></a>
+                {% else %}
+                <a href="{% url 'login' %}"><div class="header__icon-account">
+                    <div class="header__icon-account-name">
+                        <span>Login</span>
+                    </div>
+                    <div class="header__icon-account-logo">
+                        <img class="header__icon-account-logo-position" src="{% static 'img/icons/SVG/profile_icon.svg' %}" alt="">
+                    </div>
+                 </div></a>
+                {% endif %}
+                <a href="{% url 'search' %}">
+                    <div id="search_btn" class="header__icon-account">
+                        <div class="header__icon-account-name">
+                            <span>Search</span>
+                        </div>
+                        <div class="header__icon-account-logo">
+                            <img class="header__icon-account-position" src="{% static 'img/icons/SVG/search_icon.svg' %}" alt="">
+                        </div>
+                    </div>
+                </a>
+            </div>
+        </div>
+        
+    </header>
+
+    {% block content %}
+    {% endblock %}
+
+    <footer>
+        <div class="footer">
+            <div class="footer__box">
+                <div class="footer__box-left">
+                    <a href="{% url 'home' %}">
+                        <div class="footer__box-left-box">
+                            <img src="{% static 'img/logoes/crytech-logo-footer.png' %}" alt="" class="footer__box-left-box-img">
+                        </div>
+                    </a>
+                </div>
+                <div class="footer__box-right">
+                    <div class="footer__box-right-all">
+                        <div>
+                            <h3>COMPANY</h3>
+                        </div>
+                        <hr>
+                        <li><a href="{% url 'news' %}">News</a></li>
+                        <li><a href="{% url 'games' %}">Games</a></li>
+                        <li><a href="{% url 'products' %}">Shop</a></li>
+                        <li><a href="{% url 'events' %}">Events</a></li>
+                    </div>
+                    <div class="footer__box-right-all">
+                        <div>
+                            <h3>GAMES</h3>
+                        </div>
+                        <hr>
+                        <li><a href="/games/9">Hunt:Showdown</a></li>
+                        <li><a href="/games/2">The climb</a></li>
+                        <li><a href="/games/8">Robinson:the journey</a></li>
+                        <li><a href="/games/7">RYSE:Son of Rome</a></li>
+                        <li><a href="/games/10">Crysis 3</a></li>
+                        <li><a href="{% url 'games' %}">All Our Games</a></li>
+                    </div>
+                    <div class="footer__box-right-all">
+                        <div>
+                            <h3>SUPPORT</h3>
+                        </div>
+                        <hr>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>©2020 Fake-Crytech All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/mobile.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="{% static 'swiper/swiper-bundle.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+</body>
+</html>

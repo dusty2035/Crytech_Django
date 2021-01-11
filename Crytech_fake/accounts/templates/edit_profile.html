@@ -1,0 +1,64 @@
+{% extends 'base.html' %}
+
+{% block content %}
+
+<main>
+    <div class="page__information">
+       <a href="#">
+        <div class="page__information-root">
+            <h4>Home</h4>
+        </div>
+       </a>
+       
+        <a href="#">
+            <div class="page__information-root">
+                <h4> &nbsp; > Accounts</h4>
+            </div>
+        </a>
+        
+       <a href="#">
+        <div class="page__information-root">
+            <h4> &nbsp; > My account</h4>
+        </div>
+       </a>
+    </div>
+    <div class="hero__profile">
+        
+        <div class="hero__profile-background">
+
+        </div>
+
+        <div class="hero__profile-information">
+            <div class="hero__profile-information-box">
+                <div class="hero__profile-information-box-avatar">
+                    <img src="img/icons/profile_avatar.png" alt="" class="hero__profile-information-box-avatar-pic">
+                </div>
+                <div class="hero__profile-information-box-profilesetting">
+                    <div class="hero__profile-information-box-profilesetting-settings">
+                        <h4>PROFILE SETTING</h4>
+                        <hr>
+                        <form method="POST" > {% csrf_token %}
+                            {{form}}
+                        <button class="btn_temp" type="submit"> Apply </button>
+                        </form>
+                    </div>
+                </div>
+                <div class="hero__profile-information-box-accountsetting">
+                    <h4>ACCOUNT SETTING</h4>
+                    <hr>
+                    <div class="hero__profile-information-box-accountsetting-btnbox">
+                        <a class="btn_temp" href="javascript:{document.getElementById('logout').submit();}"> <h5>Log out</h5></a>
+                        <a class="btn_temp" href=""> <h5>Delete account</h5></a>
+                    </div>
+                    <form id="logout" method="POST" action="{% url 'logout' %}">
+                        {% csrf_token %}
+                        <input type="hidden"/>
+                    </form>
+                </div>
+            </div>
+        </div>
+       
+    </div>
+</main>
+
+{% endblock %}

@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+    {% load static %}
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{% static 'swiper/swiper-bundle.css' %}">
+    <link rel="stylesheet" href="{% static 'style.css' %}">
+    <title>Document</title>
+</head>
+<body>
+{% block content %}
+{% endblock %}
+</body>
+    <footer>
+        {% load static %}
+        <div class="footer">
+            <div class="footer__box">
+                <div class="footer__box-left">
+                    <a href="#">
+                        <div class="footer__box-left-box">
+                            <img src="{% static 'img/logoes/crytech-logo-footer.png' %}" alt="" class="footer__box-left-box-img">
+                        </div>
+                    </a>
+                </div>
+                <div class="footer__box-right">
+                    <div class="footer__box-right-all">
+                        <div>
+                            <h3>COMPANY</h3>
+                        </div>
+                        <hr>
+                        <li><a href="{% url 'news' %}">News</a></li>
+                        <li><a href="{% url 'games' %}">Games</a></li>
+                        <li><a href="{% url 'products' %}">Shop</a></li>
+                        <li><a href="{% url 'events' %}">Events</a></li>
+                        <li><a href="#">Q&A</a></li>
+                    </div>
+                    <div class="footer__box-right-all">
+                        <div>
+                            <h3>GAMES</h3>
+                        </div>
+                        <hr>
+                        <li><a href="/games/7">Hunt:Showdown</a></li>
+                        <li><a href="/games/9">The climb</a></li>
+                        <li><a href="/games/8">Robinson:the journey</a></li>
+                        <li><a href="/games/1">RYSE:Son of Rome</a></li>
+                        <li><a href="/games/4">Crysis 3</a></li>
+                        <li><a href="{% url 'games' %}">All Our Games</a></li>
+                    </div>
+                    <div class="footer__box-right-all">
+                        <div>
+                            <h3>SUPPORT</h3>
+                        </div>
+                        <hr>
+                        <li><a href="#">Contact</a></li>
+                        <li><a href="#">Terms of Service</a></li>
+                        <li><a href="#">Privacy Policy</a></li>
+                      
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="copyright">
+            <p>©2020 Fake-Crytech All Rights Reserved</p>
+        </div>
+    </footer>
+
+    <script src="{% static 'js/header.js' %}"></script>
+    <script src="{% static 'js/mobile.js' %}"></script>
+    <script src="{% static 'js/scripts.js' %}"></script>
+    <script src="{% static 'swiper/swiper-bundle.js' %}"></script>
+    <script src="{% static 'js/swiper.js' %}"></script>
+</body>
+</html>

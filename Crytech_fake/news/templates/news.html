@@ -1,0 +1,58 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    {% load static %}
+    <div class="news_background">
+        <video class="news_background_video" autoplay loop muted>
+            <source src="{% static 'video/background-video.mp4' %}"> 
+        </video>
+    </div>
+    <div class="news_main">
+        <div class="news_main-box">
+            {% for news in news %}
+            <a href="{% url 'news' news.id %}">
+                <div class="news_main-box-newsbox">
+                    <img class="news_main-box-newsbox-background" src="{{ news.img.url }}" alt="">
+                    <h4 class="news_main-box-newsbox-date" >{{ news.date }}</h4>
+                    <h2 class="news_main-box-newsbox-title">{{ news.title }}</h2>
+                </div>
+            </a>
+            {% endfor %}
+            {% if news.has_other_pages %}
+            <div class="pagination">
+                {% if news.has_previous %}
+                <div class="pagination-left">
+                    <a href="?page={{ news.previus_page_number }}"><img src="{% static 'img/icons/SVG/pagination_link.svg' %}" alt=""></a>
+                </div>
+                {% else %}
+                <div class="pagination-left disabled">
+                    <a ><img src="{% static 'img/icons/SVG/pagination_link.svg' %}" alt=""></a>
+                </div>
+                {% endif %}
+                {% for i in news.paginator.page_range %}
+                    {% if news.number == i %}
+                        <div class="pagination-num active">
+                            <a>{{ i }}</a>
+                        </div>
+                    {% else %}
+                        <div class="pagination-num">
+                            <a href="?page={{ i }}">{{ i }}</a>
+                        </div>
+                    {% endif %}
+                {% endfor %}
+                {% if news.has_next %}
+                    <div class="pagination-right">
+                        <a href="?page={{ news.next_page_number }}"><img src="{% static 'img/icons/SVG/pagination_link.svg' %}" alt=""></a>
+                    </div>
+                {% else %}
+                    <div class="pagination-right disabled">
+                        <a><img src="{% static 'img/icons/SVG/pagination_link.svg' %}" alt=""></a>
+                    </div>
+                {% endif %}
+            </div>
+            {% endif %}
+        </div>
+    </div>
+</main>
+{% endblock %}

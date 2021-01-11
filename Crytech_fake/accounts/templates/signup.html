@@ -1,0 +1,63 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    {% load static %}
+    <div class="hero_video-container-login">
+        <video class="hero_video" autoplay loop muted>
+            <source src="{% static 'video/background-video.mp4' %}"> 
+        </video>
+    </div>
+
+    <div class="login">
+        <div class="login-box">
+            <div class="login-box-top">
+                <div onclick="signup()" class="login-box-top-left_page" id="signup">
+                    <h3>Sign up</h3>
+                </div>
+                <div onclick="login()" class="login-box-top-right_page" id="login">
+                    <h3>Login</h3>
+                </div>
+            </div>
+            <div class="login-box-bottom">
+                
+                <form class="form_signup" method="POST" action="{% url 'signup' %}" id="signup_form"> 
+                    {% csrf_token %}
+                    <div class="login-box-bottom-signup_page" id="signup_box">
+                        <div class="login-box-bottom-signup-flex"><h3>Nickname</h3></div>
+                        <input id="name" name="name" class="login-box-bottom-signup-flex-input" type="text">
+                        <div class="login-box-bottom-signup-flex"><h3>Email</h3><h3></h3></div>
+                        <input name="email" class="login-box-bottom-signup-flex-input" type="email">
+                        <div class="login-box-bottom-signup-flex"><h3>Password</h3><h3></h3></div>
+                        <input id="pass1" name="password0" class="login-box-bottom-signup-flex-input" type="password">
+                        <div class="login-box-bottom-signup-flex"><h3>Repeat Password</h3><h3></h3></div>
+                        <input id="pass2" name="password1" class="login-box-bottom-signup-flex-input" type="password">
+                        <div class="login-box-bottom-signup-flex-chkbox">
+                            <input name="signup_checkbox" id="signup_checkbox" class="login-box-bottom-signup-flex-chkbox-input" type="checkbox">
+                            <label for="signup_checkbox"> I agree the <a href="#">Terms of service</a></label>
+                        </div>
+                        <div class="login-box-bottom-signup-flex"><h3 style="color: red;" >{% if error %} {{ error }} {% endif %}</h3></div>
+                        <input class="login-box-bottom-signup-flex-submit" type="submit" id="submit">
+                    </div>
+                </form>
+                <form class="form_login" method="POST" action="{% url 'login' %}"  id="login_form"> {% csrf_token %}
+                    <div class="login-box-bottom-login_page" id="login_box">
+                        <div  class="login-box-bottom-login-flex"><h3>Nickname</h3></div>
+                        <input name="user" class="login-box-bottom-login-flex-input" type="text">
+                        <div class="login-box-bottom-login-flex"><h3>Password</h3></div>
+                        <input name="password" class="login-box-bottom-login-flex-input" type="password">
+                        <div class="login-box-bottom-login-flex-chkbox">
+                            <input name="login_checkbox" id="login_checkbox" class="login-box-bottom-login-flex-chkbox-input" type="checkbox">
+                            <label for="login_checkbox"> Remember me</label>
+                        </div>
+                        <div class="login-box-bottom-signup-flex"><h3 style="color: red;" >{% if error1 %} {{ error1 }} {% endif %}</h3></div>
+                        <input class="login-box-bottom-signup-flex-submit" type="submit" id="submit1">
+                    </div>
+                </form>
+                
+               
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

@@ -1,0 +1,89 @@
+{% extends 'base_search.html'%}
+{% block content %}
+{% load static %}
+<main>
+    <div id="search">
+        <di class="search-box">
+            <div>
+                <form class="search-box-top">
+                    <input class="search-box-top-input" id="search" placeholder="Search" type="text" name="search" required>
+                    <button class="search-box-top-btn" > <img src="{% static 'img/icons/SVG/search_icon.svg' %}" alt=""> </button>
+                </form>
+                <a href="{% url 'home' %}">
+                <div class="search-box-close_btn">
+                    <img src="{% static 'img/icons/SVG/close.svg' %}" alt="">
+                </div>
+                </a>
+            </div>
+            <!-- <hr class="line"> -->
+            <div class="search-box-bottom">
+            {% if x %}
+                <h3> No match were found </h3>
+            {% else %}
+                {% if games %}
+                <h3> Related games </h3>
+                    <div class="gamesearch">
+                        {% for game in games %}
+                        <div class="gamesearch-boxcontent">
+                            <a href="{% url 'game' game.id %}">
+                                <img src="{{ game.main_img.url }}" alt="" class="gamesearch-boxcontent-img">
+                                <img src="{{ game.name_img.url }}" alt="" class="gamesearch-boxcontent-name">
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if products %}
+                <h3> Related products </h3>
+                    <div class="gamesearch">
+                        {% for product in products %}
+                        <div class="gamesearch-boxcontent">
+                            <a href="{% url 'product' product.id %}">
+                                <img src="{{ product.main_img.url }}" alt="" class="gamesearch-boxcontent-img">
+                                <img src="{{ product.name_img.url }}" alt="" class="gamesearch-boxcontent-name">
+                            </a>
+                        </div>
+                        {% endfor %}
+                    </div>
+                {% endif %}
+                {% if news or events %}            
+                    <h3> related Articles </h3>
+                    {% for news in news %}
+                        <div class="other-search">
+                            <div class="other-search-content">
+                                <a class="other-search-content-a" href="{% url 'news' news.id %}">
+                                    <div class="other-search-content-a-imgbox">
+                                        <img src="{{ news.img.url }}" alt="" class="other-search-content-a-imgbox-img">
+                                    </div>
+                                    <div class="other-search-content-a-text">
+                                        <div class="other-search-content-a-text-title">{{ news.title }}</div>
+                                        <div class="other-search-content-a-text-excerpt">{{ news.excerpt }} ...</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                    {% for event in events %}
+                        <div class="other-search">
+                            <div class="other-search-content">
+                                <a class="other-search-content-a" href="{% url 'event' event.id %}">
+                                    <div class="other-search-content-a-imgbox">
+                                        <img src="{{ event.img.url }}" alt="" class="other-search-content-a-imgbox-img">
+                                    </div>
+                                    <div class="other-search-content-a-text">
+                                        <div class="other-search-content-a-text-title">{{ event.title }}</div>
+                                        <div class="other-search-content-a-text-excerpt">{{ event.excerpt_m }} ...</div>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                    {% endfor %}
+                {% endif %} 
+            {% endif %}
+            </div>
+        </div>
+    </div>
+   
+</main>
+
+{% endblock %}

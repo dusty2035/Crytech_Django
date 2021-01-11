@@ -1,0 +1,8 @@
+#header {
+    background-image: url(img/adminBK.jpg) ;
+}
+
+body{
+    background-image: url(img/adminBK.jpg) ;
+    object-fit: cover;
+}

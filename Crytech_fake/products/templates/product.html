@@ -1,0 +1,124 @@
+{% extends 'base.html' %}
+
+{% block content %}
+{% load static %}
+<main>
+    
+    <div class="shop-single">
+        <div class="shop-single_slideshow">
+            <div class="container">
+                <div class="container-mySlides">
+                  <img src="{{ product_s.slide_img_1.url }}" style="width:100%">
+                </div>
+                <div class="container-mySlides">
+                  <img src="{{ product_s.slide_img_2.url }}" style="width:100%">
+                </div>
+                <div class="container-mySlides">
+                  <img src="{{ product_s.slide_img_3.url }}" style="width:100%">
+                </div>
+                <div class="container-mySlides">
+                  <img src="{{ product_s.slide_img_4.url }}" style="width:100%">
+                </div>
+                <div class="container-mySlides">
+                  <img src="{{ product_s.slide_img_5.url }}" style="width:100%">
+                </div>
+                <div class="container-mySlides">
+                  <img src="{{ product_s.slide_img_6.url }}" style="width:100%">
+                </div>
+                  
+
+                <div class="container-row">
+                  <div class="container-column">
+                    <img class="container-demo" src="{{ product_s.slide_img_1.url }}" style="width:100%" onclick="currentSlide(1)" alt="The Woods">
+                  </div>
+                  <div class="container-column">
+                    <img class="container-demo" src="{{ product_s.slide_img_2.url }}" style="width:100%" onclick="currentSlide(2)" alt="Cinque Terre">
+                  </div>
+                  <div class="container-column">
+                    <img class="container-demo" src="{{ product_s.slide_img_3.url }}" style="width:100%" onclick="currentSlide(3)" alt="Mountains and fjords">
+                  </div>
+                  <div class="container-column">
+                    <img class="container-demo" src="{{ product_s.slide_img_4.url }}" style="width:100%" onclick="currentSlide(4)" alt="Northern Lights">
+                  </div>
+                  <div class="container-column">
+                    <img class="container-demo" src="{{ product_s.slide_img_5.url }}" style="width:100%" onclick="currentSlide(5)" alt="Nature and sunrise">
+                  </div>    
+                  <div class="container-column">
+                    <img class="container-demo" src="{{ product_s.slide_img_6.url }}" style="width:100%" onclick="currentSlide(6)" alt="Snowy Mountains">
+                  </div>
+                </div>
+              </div>
+              <div   class="shop-single_slideshow-infobox">
+                  <div onclick="des_btn_f()" class="shop-single_slideshow-infobox-description">
+                    <h3  id="description">Description</h3>
+                  </div>
+                  <div onclick="sys_btn_f()" class="shop-single_slideshow-infobox-System_requirements">
+                    <h3   id="system_requirements" >System Requirements</h3>
+                  </div>
+              </div>
+              <div class="shop-single_slideshow-contentbox">
+                  <div class="shop-single_slideshow-contentbox-description" id="des_box">
+                    <p> {{ product_s.game_description_bottom }} </p>
+                  </div>
+                  <div class="shop-single_slideshow-contentbox-System_requirements" id="sys_box">
+                    <p>{{ product_s.game_system_requirements }}</p>
+                  </div>
+              </div>
+        </div>
+        <div class="shop-single_description">
+            <div class="shop-single_description-box">
+                <div class="shop-single_description-box-name">
+                    <h2>{{ product_s.game_title }}</h2>
+                </div>
+                <div class="shop-single_description-box-price">
+                    <h3>${{ product_s.price }}</h3>
+                </div>
+                <div class="shop-single_description-box-quantity">
+                    <h3>Quantity :</h3>
+                    <div class="shop-single_description-box-quantity-box">
+                        <div class="shop-single_description-box-quantity-box-minus">
+                            <h4>-</h4>
+                        </div>
+                        <div class="shop-single_description-box-quantity-box-num">
+                            <h4>99</h4>
+                        </div>
+                        <div class="shop-single_description-box-quantity-box-plus">
+                            <h4>+</h4>
+                        </div>
+                    </div>
+                </div>
+                <div class="shop-single_description-box-buy_btn">
+                    <img class="shop-single_description-box-buy_btn-shopbox" src="{% static 'img/icons/SVG/box-shop.svg' %}" alt="" >
+                    <h3>
+                        Add to cart
+                    </h3>
+                </div>
+                <div class="shop-single_description-box-game_description">
+
+                    <p>{{ product_s.game_description_top }}</p>
+                </div>
+                {% if product_s.awarsd_img %}
+                <div class="shop-single_description-box-awards">
+                  <img src="{{ product_s.awards_img.url }}" alt="">
+                </div>
+                {% endif %}
+                <div class="shop-single_description-box-icons">
+                    <div class="shop-single_description-box-icons-flex">
+                        <img src="{% static 'img/icons/monry_back.png' %}" alt="">
+                        <h4>30-day money back guarantee for unused keys</h4>
+                    </div>
+                    <div class="shop-single_description-box-icons-flex">
+                        <img src="{% static 'img/icons/secure_payment.png' %}" alt="">
+                        <h4>Secure payment</h4>
+                    </div>
+                    <div class="shop-single_description-box-icons-flex">
+                        <img src="{% static 'img/icons/shiping.png' %}" alt="">
+                        <h4>Instant delivery for keys</h4>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

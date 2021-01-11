@@ -1,0 +1,32 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    <div class="news_page">
+        <div class="news_page-top">
+            <img class="news_page-top-background" src="{{ news_s.img.url }}" alt="{{ news_s.title }}">
+            <div class="news_page-top-darkfilter"></div>
+            <div class="news_page-top-box">
+                <div class="news_page-top-box-left">
+                    <img src="{{ news_s.img.url }}" alt="">
+                </div>
+                <div class="news_page-top-box-right">
+                    <div class="news_page-top-box-right-date">
+                        <h5>{{ news_s.date }}</h5>
+                    </div>
+                    <div class="news_page-top-box-right-title">
+                        <h2>{{ news_s.title}}</h2>
+                    </div>
+                    <div class="news_page-top-box-right-trailer_link">
+                       <a href="#"><h4>Watch trailer</h4></a>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="news_page-bottom">
+            <p>{{ news_s.content }}</p>
+        </div>
+    </div>
+</main>
+
+{% endblock %}

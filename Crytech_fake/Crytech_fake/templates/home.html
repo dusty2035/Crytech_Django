@@ -1,0 +1,153 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    {% load static %}
+    <div class="hero__video-container">
+        <video class="hero__video" autoplay loop muted>
+            <source src="{% static 'video/background-video.mp4' %}"> 
+        </video>
+    </div>
+    
+    <div class="hero__text">
+        <img class="hero__text-img" src="{% static 'img/logoes/Crysis_hero.webp' %}" alt="">
+        <a class="hero__text-btn" href="/games/5">Buy now!</a>
+    </div>
+
+    <div class="news">
+        <div class="swiper-container" style="height: 100%; width: 100%;">
+            <div class="swiper-wrapper">
+                {% for event in event.all %}
+                <div class="swiper-slide">
+                    <div class="news__top">
+                        <div class="news__top-left">
+                            <div class="news__top-left-imgbox">
+                                <img class="news__top-left-imgbox-img" src="{{ event.img.url }}" alt="">
+                                <a href="mailto:?">
+                                    <div class="news__top-left-imgbox-box">
+                                        <svg class="news__top-left-imgbox-box-img" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 238.04 238.04"><defs><style>.cls-1{fill:#414042;}.cls-2{fill:none;stroke:#fff;stroke-miterlimit:10;stroke-width:4.62px;}.cls-3{fill:#fff;}</style></defs><g id="Layer_2" data-name="Layer 2"><g id="Layer_1-2" data-name="Layer 1"><rect class="cls-1" width="238.04" height="238.04"/><circle class="cls-2" cx="79.91" cy="118.96" r="13.56"/><circle class="cls-2" cx="143.19" cy="84.3" r="13.56"/><circle class="cls-2" cx="143.19" cy="153.63" r="13.56"/><rect class="cls-3" x="86.76" y="97.34" width="47.76" height="6.07" transform="translate(-35.36 68.77) rotate(-30)"/><rect class="cls-3" x="87.76" y="134.17" width="47.76" height="6.07" transform="translate(83.56 -37.44) rotate(30)"/></g></g></svg>
+                                    </div>
+                                </a>
+                            </div>
+                        </div>
+                        <div class="news__top-right">
+                            <div class="news__top-right-box">
+                                <h4 class="news__top-right-box-namedate"> 
+                                    <span class="news__top-right-box-namedate-name">{{event.title}}</span>
+                                    <p class="news__top-right-box-namedate-date">{{event.place}} -- {{event.date}}</p>
+                                </h4>
+                                <h2 class="news__top-right-box-title">
+                                    {{event.headline}}
+                                </h2>
+                                <h3 class="news__top-right-box-description">
+                                    {{event.excerpt}}
+                                </h3>
+                                <p class="readmore">
+                                    <a href="{% url 'event' event.id %}">Read more ...</a>
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                {% endfor %}
+            </div>
+            
+            <div class="swiper-button-next"></div>
+            <div class="swiper-button-prev"></div>
+        </div>
+        
+        <div class="news__bottom">
+            <div class="news__bottom-box">
+                {% for news in news.all %}
+                <div class="news__bottom-box-section">
+                    <a href="{% url 'news' news.id %}"><div class="news__bottom-box-section-imgbox">
+                        <img src="{{ news.img.url }}" alt="{{ news.title }}" class="news__bottom-box-section-imgbox-img">
+                    </div>
+                    <div class="news__bottom-box-section-text">
+                        <div class="news__bottom-box-section-text-title">
+                            <span>{{ news.title }}</span>
+                        </div>
+                        <div class="news__bottom-box-section-text-description">
+                            <h3>{{news.excerpt}}</h3>
+                        </div>
+
+                    </div></a>
+                </div>
+                {% endfor %}
+            </div>
+        </div> 
+    </div>
+    <div class="crytech">
+        <div class="crytech__box">
+            <h1 class="crytech__box-header">We Are Crytech</h1>
+            <p class="crytech__box-p">Crytek is an independent video game developer, publisher, and technology provider based in Frankfurt, Germany. Crytek pushes the boundaries of the possible to make the impossible a reality. We want to create the most fun gaming experiences around, and if we have to develop new technology or push genre boundaries to do so, then we will. With almost two decades of experience in the games industry, Crytek takes its unique combination of experience and skills and continues to make an impact via innovative, fun, cutting-edge games and technology.</p>
+        </div>
+    </div>
+    <div class="awards">
+        <div class="awards__box">
+            <h1 class="awards__box-header">Awards & Accolades</h1>
+            <div class="awards__box-awards">
+                {% load static %}
+                <div class="awards__box-awards-top">
+                    <div class="awards__box-awards-top-left">
+                        <img class="awards__box-awards-img" src="{% static 'img/logoes/awards.png' %}" alt="" >
+                    </div>
+                    <div class="awards__box-awards-top-right">
+                        <img class="awards__box-awards-img" src="{% static 'img/logoes/winner-2018.png' %}" alt="">
+                    </div>
+                    
+                </div>
+                <div class="awards__box-awards-bottom">
+                    <img class="awards__box-awards-img-2" src="{% static 'img/logoes/deutscher award.png' %}" alt="">
+                    <img class="awards__box-awards-img-2" src="{% static 'img/logoes/e3 2017-winner.png' %}" alt="">
+                    <img class="awards__box-awards-img-2" src="{% static 'img/logoes/pc exclusive 2017.png' %}" alt="">
+                    <img class="awards__box-awards-img-2" src="{% static 'img/logoes/vr now 2016 award.png' %}" alt="">
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="partners">
+        <div class="partners__box">
+            <h2 class="partners__box-header">Partners</h2>
+            <div class="partners__box-partners">
+                <div class="partners__box-partners-box">
+                    <img src="{% static 'img/logoes/intel.png' %}" alt="" class="partners__box-partners-box-img">
+                    <p>Intel Corporation</p>
+                </div>
+                <div class="partners__box-partners-box">
+                    <img src="{% static 'img/logoes/Nvidia-Logo.png' %}" alt="" class="partners__box-partners-box-img">
+                    <p>The way it's meant to be played</p>
+                </div>
+                <div class="partners__box-partners-box">
+                    <img src="{% static 'img/logoes/apple.png' %}" alt="" class="partners__box-partners-box-img">
+                    <p>Look's prefect</p>
+                </div>
+                <div class="partners__box-partners-box">
+                    <img src="{% static 'img/logoes/oculus.png' %}" alt="" class="partners__box-partners-box-img">
+                    <p>Enjoy the VR</p>
+                </div>
+                <div class="partners__box-partners-box">
+                    <img src="{% static 'img/logoes/sony.png' %}" alt="" class="partners__box-partners-box-img">
+                    <p>Always prefect</p>
+                </div>
+                <div class="partners__box-partners-box">
+                    <img src="{% static 'img/logoes/amd.png' %}" alt="" class="partners__box-partners-box-img">
+                    <p>The future is fusion</p>
+                </div>
+                <div class="partners__box-partners-box">
+                    <img src="{% static 'img/logoes/microsoft.png' %}" alt="" class="partners__box-partners-box-img">
+                    <p>Enjoy the Best</p>
+                </div>
+                <div class="partners__box-partners-box">
+                    <img src="{% static 'img/logoes/nexon.png' %}" alt="" class="partners__box-partners-box-img">
+                    <p>Lorem ipsum dolor sit</p>
+                </div>
+                <div class="partners__box-partners-box">
+                    <img src="{% static 'img/logoes/amazon.png' %}" alt="" class="partners__box-partners-box-img">
+                    <p>Buy what you want</p>
+                </div>
+            </div>
+        </div>
+    </div>
+</main>
+{% endblock %}

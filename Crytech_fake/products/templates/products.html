@@ -1,0 +1,42 @@
+{% extends 'base.html' %}
+
+{% block content %}
+<main>
+    {% load static %}
+    <div class="hero-banner-games">
+        <video class="hero__video" autoplay loop muted>
+            <source src="{% static 'video/background-video.mp4' %}"> 
+        </video>
+    </div>
+    <div class="page__information">
+        <a href="{% url 'home' %}">
+         <div class="page__information-root">
+             <h4>Home</h4>
+         </div>
+        </a>
+        
+         <a style="cursor: pointer;">
+             <div class="page__information-root">
+                 <h4> &nbsp; > Shop</h4>
+             </div>
+         </a>
+         
+        
+     </div>
+    <div class="shop">
+        <div class="shop-box">
+            {% for product in product.all %}
+            <div class="shop-box-content">
+                <a href="{% url 'product' product.id %}">
+                    <img src="{{ product.main_img.url }}" alt="" class="shop-box-content-img">
+                    <img src="{{ product.name_img.url  }}" alt="" class="shop-box-content-name">
+                    <div class="shop-box-content-box">
+                        <h3 class="shop-box-content-box-gamesname">{{ product.game_title }}</h3> <h3 class="shop-box-content-box-price">${{ product.price }}</h3>
+                    </div>
+                </a>
+            </div>  
+            {% endfor %}
+        </div>
+    </div>
+</main>
+{% endblock %}

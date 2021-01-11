@@ -1,0 +1,90 @@
+{% extends 'base.html' %}
+{% block content %}
+<main>
+    {% load static %}
+    <div class="hero-banner-games">
+        <video class="hero__video" autoplay loop muted>
+            <source src="{% static 'video/background-video.mp4' %}"> 
+        </video>
+    </div>
+    <div class="page__information-white">
+        <a href="{% url 'home' %}">
+            <div class="page__information-white-root">
+                <h4>Home</h4>
+            </div>
+        </a>
+        
+        <a href="{% url 'games' %}">
+            <div class="page__information-white-root">
+                <h4> &nbsp; > Games</h4>
+            </div>
+        </a>
+
+        <a style="cursor: pointer;" >
+            <div class="page__information-white-root">
+                <h4> &nbsp; > {{ game.game_title }}</h4>
+            </div>
+        </a>
+    </div>
+    <div class="game_info">
+        <img src="{{ game.background_img.url }}" alt="{{ game.alt_text }}" class="game_info-background">
+        <div>
+            <div class="game_info-darkfilter"></div>
+        </div>
+
+    </div>
+    <div class="game_info-box">
+        <div class="game_info-box-content">
+                <div class="game_info-box-content-box">
+                <img src="{{ game.main_img.url }}" alt="{{ game.alt_text }}" class="game_info-box-content-box-img">
+                <img src="{{ game.name_img.url }}" alt="{{ game.alt_text }}" class="game_info-box-content-box-name">
+                </div>
+        </div>
+        <div class="game_info-box-description">
+            <div class="game_info-box-description-box">
+                <div class="game_info-box-description-box-top">
+                    <h5>Release date : </h5> <h5>{{ game.release_date }}</h5> <h5> Publisher : </h5> <h5 ><a href="{{ game.publisher_1_anchor }}">{{ game.publisher_1 }}</a> , <a href="{{ game.publisher_2_anchor }}">{{ game.publisher_2 }}</a></h5>
+                </div>
+                <div class="game_info-box-description-box-title">
+                    <div class="game_info-box-description-box-title-set">
+                        {{ game.game_title }}
+                    </div>
+                </div>
+
+                <div class="game_info-box-description-box-info">
+                    <p>{{ game.game_description }}</p>
+                </div>
+                <div class="game_info-box-description-box-bottom">
+                    <a href="{{ game.trailer_url }}"><h3>Watch trailer</h3></a><h3> Get it now on : </h3>
+                    <div class="game_info-box-description-box-bottom-platform">
+                        <a href="{{ game.platform_1.anchor }}">{{ game.platform_1 }}</a>
+                        <a href="{{ game.platform_2_anchor }}">{{ game.platform_2 }}</a>
+                        <a href="{{ game.platform_3_anchor }}">{{ game.platform_3 }}</a>
+                    </div>
+                </div>
+                
+                
+            </div>
+        </div>
+    </div>
+    </div>
+    <div class="game">
+        <div class="game-box">
+            {% for games in games.all %}
+                {% if games.game_title == game.game_title %}
+                    <!-- Continue -->
+                {% else %}
+                <div class="game-box-content">
+                    <a href="{% url 'game' games.id %}">
+                        <img src="{{ games.main_img.url }}" alt="{{ games.game_title }}" class="game-box-content-img">
+                        <img src="{{ games.name_img.url }}" alt="{{ games.game_title }}" class="game-box-content-name">
+                    </a>
+                </div>
+                {% endif %}
+            {% endfor %}
+            <div>{{x.x}}</div>
+        </div>
+    </div>
+</main>
+
+{% endblock %}
